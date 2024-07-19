@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # root "articles#index"
   root "welcome#index"
 
+  get '/:base58', to: "redirects#show"
+  
   namespace :api do
     resources :generator, only: [:create]
   end
