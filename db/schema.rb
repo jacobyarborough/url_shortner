@@ -28,6 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_19_153423) do
     t.datetime "updated_at", null: false
     t.string "base58"
     t.string "domain"
+    t.index ["base58"], name: "index_short_urls_on_base58", unique: true
     t.index ["long_url_id"], name: "index_short_urls_on_long_url_id"
   end
 
