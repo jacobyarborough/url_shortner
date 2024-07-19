@@ -5,7 +5,7 @@ module UrlGenerator
   module_function
 
   def generate_rand_64_bit_int
-    SecureRandom.random_number(2**64)
+    SecureRandom.random_number(2**63)
   end
 
   def encode_to_base_58(int)
