@@ -6,6 +6,9 @@ Rspec.describe ShortUrl do
     it { should validate_uniqueness_of :identifier }
     it { should validate_presence_of :short_url }
     it { should validate_uniqueness_of :short_url }
+    it { should validate_presence_of :base58 }
+    it { should validate_uniqueness_of :base58 }
+    it { should validate_presence_of :domain }
   end
 
   describe 'associations' do

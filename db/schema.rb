@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_19_144651) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_19_153423) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +26,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_19_144651) do
     t.bigint "long_url_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "base58"
+    t.string "domain"
     t.index ["long_url_id"], name: "index_short_urls_on_long_url_id"
   end
 
