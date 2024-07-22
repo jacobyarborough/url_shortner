@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   
   namespace :api do
     resources :generator, only: [:create]
+    resources :retrievals, only: [:create]
   end
 end
