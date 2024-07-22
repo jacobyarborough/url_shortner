@@ -11,20 +11,17 @@ class UrlGenerationService
   end
 
   def self.create_url_hash(long_url)
-    return_hash = {
-      full_url: long_url.full_url,
-      short_url: long_url.short_url.short_url
-    }
+    return_hash = { object: long_url, message: "The short url has already been created" }
   end
 
   def self.create_short_url(long_url)
     int64 = UrlGenerator.generate_rand_64_bit_int
-    base58_string = UrlGenerator.encode_to_base_58(int64)
-    short_url = ShortUrl.create!(identifier: int64, domain: 'localhost:3000', base58: base58_string, long_url: long_url)
+    base58_string = UrlGenerator.encode_base_58(int64)
+    short_url = ShortUrl.create!(identifier: int64, long_url: long_url)
 
     return_hash = {
-      full_url: long_url.full_url,
-      short_url: short_url.short_url
+      long_url: long_url.url,
+      short_url: short_url.url(base58_string)
     }
   end
 end

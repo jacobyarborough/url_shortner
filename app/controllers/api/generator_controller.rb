@@ -2,8 +2,8 @@ class Api::GeneratorController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
-    full_url = LongUrl.find_or_create_by(full_url: generator_params[:long_url])
-    urls = UrlGenerationService.generate_short_url(full_url)
+    long_url = LongUrl.find_or_create_by(url: generator_params[:long_url])
+    urls = UrlGenerationService.generate_short_url(long_url)
     render json: urls
   end
 
