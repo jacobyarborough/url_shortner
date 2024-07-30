@@ -1,0 +1,21 @@
+<h1>Create a short URL</h1>
+
+<%= form_with model: @long_url, url: short_urls_path do |f| %>
+  <% if f.object.errors.any? %>
+    <p>
+      <% f.object.errors.each do |error| %>
+        <div>
+          <%= error.full_message %>
+        </div>
+      <% end %>
+    </p>
+  <% end %>
+
+  <div>
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,1 +1,5 @@
 <h1>Welcome to the Mustard Seed Shortner!</h1>
+<% binding.pry %>
+<% if session[:urls] %>
+  <p>Short URL: <%= session[:urls] %></p>
+<% end %>
