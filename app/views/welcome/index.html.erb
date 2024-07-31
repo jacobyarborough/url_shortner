@@ -1,5 +1,45 @@
 <h1>Welcome to the Mustard Seed Shortner!</h1>
-<% binding.pry %>
+
+<%= form_with model: @long_url, url: short_urls_path do |f| %>
+  <% if f.object.errors.any? %>
+    <p>
+      <% f.object.errors.each do |error| %>
+        <div>
+          <%= error.full_message %>
+        </div>
+      <% end %>
+    </p>
+  <% end %>
+
+  <div>
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
+
 <% if session[:urls] %>
-  <p>Short URL: <%= session[:urls] %></p>
+  <table>
+    <caption>URLs</caption>
+    <thead>
+      <tr>
+        <th scope="col">Long URL</th>
+        <th scope="col">Short URL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% session[:urls].each do |url_group| %>
+        <tr>
+          <td>
+            <%= url_group["long_url"] %>
+          </td>
+          <td>
+            <%= url_group["short_url"] %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>

@@ -12,7 +12,15 @@ class ShortUrlsController < ApplicationController
   def create
     long_url = LongUrl.find_or_create_by(url: url_params[:url])
     @urls = UrlGenerationService.generate_short_url(long_url)
-    session[:urls] = @urls
+    
+    if session[:urls]
+      url_array = session[:urls]
+      url_array.push(@urls)
+      session[:urls] = url_array
+    else
+      session[:urls] = [@urls]
+    end
+
     redirect_to root_path
   end
 

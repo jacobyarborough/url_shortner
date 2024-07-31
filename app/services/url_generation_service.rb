@@ -11,7 +11,10 @@ class UrlGenerationService
   end
 
   def self.create_url_hash(long_url)
-    return_hash = { object: long_url, message: "The short url has already been created" }
+    return_hash = {
+      long_url: long_url.url,
+      short_url: long_url.short_url
+    }
   end
 
   def self.create_short_url(long_url)
